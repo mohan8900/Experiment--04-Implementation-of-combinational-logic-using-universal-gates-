@@ -1,85 +1,102 @@
-# Exp-02-Implementation-of-Half-Adder-and-Full-Adder-circuit
+# Experiment--04-Implementation-of-combinational-logic-using-universal-gates-
+ ## Implementation-of-Half-subtractor-and-Full-subtractor-circuit
+## AIM:
+To implement the given logic function using NAND and NOR gates and to verify its operation in Quartus using Verilog programming.
+F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate
+F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')' using NOR gate
 
-# Implementation-of-Half-Adder-and-Full-Adder-circuit
-### AIM:
-To design a half adder and full adder circuit and verify its truth table in Quartus using Verilog programming.
 
-### Equipments Required:
+## Equipments Required:
 Hardware – PCs, Cyclone II , USB flasher
+
 Software – Quartus prime
-Theory
-Adders are digital circuits that carry out addition of numbers.
 
-### Half Adder
-Half adder is a combinational circuit that performs simple addition of two binary numbers. The input variables designate the augend and addend bits; the output variables produce the sum and carry. It is necessary to specify two output variables because the result may consist of two binary digits.
-
-Sum = A’B+AB’ =A ⊕ B Carry = AB
-
-### Full Adder
-Full adder is a digital circuit used to calculate the sum of three binary bits. It consists of three inputs and two outputs. Two of the input variables, denoted by A and B, represent the two significant bits to be added. The third input, Cin, represents the carry from the previous lower significant position. Two outputs are necessary because the arithmetic sum of three binary digits ranges in value from 0 to 3, and binary 2 or 3 needs two digits. The two outputs are sum and carry.
-
-Sum =A’B’Cin + A’BCin’ + ABCin + AB’Cin’ = A ⊕ B ⊕ Cin Carry = AB + ACin + BCin
-
- ![image](https://user-images.githubusercontent.com/36288975/163552156-a13e5a56-c638-4110-97d9-8896907c8d25.png)
-
-#### Figure -01 HALF ADDER 
+## Theory:
+A universal gate is a logic gate which can implement any Boolean function without the need to use any other type of logic gate. The NOR gate and NAND gate are universal gates. This means that you can create any logical Boolean expression using only NOR gates or only NAND gates. In practice, this is advantageous since NOR and NAND gates are economical and easier to fabricate than other logic gates. Similarly, an OR gate is typically realised as a NOR gate followed by an inverter.
+A universal gate is a logic gate which can implement any Boolean function without the need to use any other type of logic gate. The NOR gate and NAND gate are universal gates. This means that you can create any logical Boolean expression using only NOR gates or only NAND gates. In practice, this is advantageous since NOR and NAND gates are economical and easier to fabricate than other logic gates. Similarly, an OR gate is typically realised as a NOR gate followed by an inverter.
+ 
 
 
-![image](https://user-images.githubusercontent.com/36288975/163552057-b3547877-6d07-45b4-b7e0-bcfebfad9e1d.png)
+## Procedure
 
-#### Figure -02 FULL ADDER 
+1.Create a project with required entities.
 
-### Procedure
+2.Create a module along with respective file name.
 
-Connect the supply (+5V) to the circuit
-Switch ON the main switch
-If the output is 1, then the led glows.
-### 
-Program:
+3.Run the respective programs for the given boolean equations.
+
+4.Run the module and get the respective RTL outputs.
+
+5.Create university program(VWF) for getting timing diagram.
+
+6.Give the respective inputs for timing diagram and obtain the results.
+
+## Program:
 /*
+Program to design a Implementation of combinational logic using universal gates-  and verify its truth table in quartus using Verilog programming.
+Developed by: A K mohan raj  
+RegisterNumber: 212221230064
+*/
 ```
-Program to design a half adder and full adder circuit and verify its truth table in quartus using Verilog programming.
-Developed by: A.K MOAHNA RAJ
+NAND GATE PROGRAM:
+
+module un1(a,b,c,d,f);
+input a,b,c,d;
+output f;
+assign  f=((~(~c&b&a))&(~(~d&c&a))&(~(c&(~b)&a)));
+endmodule
+```
+
+## Output:
+
+## Truthtable(F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate)
+
+
+![git log](m1.jpeg)
+
+
+
+##  RTL realization(F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate)
+
+
+![git log](m2.jpeg)
+
+
+## Timing diagram (F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate)
+
+
+![git log](m3.jpeg)
+
+### Program:
+ 
+Program to design a Implementation of combinational logic using universal gates-  and verify its truth table in quartus using Verilog programming.
+Developed by:A K MOHN ARAJ 
 RegisterNumber:  212221230064
 
-
-Half adder program:
-
-module fulladd (a,b,sum,carry);
-input a,b;
-output sum,carry;
-assign sum = (a^b);
-assign carry = (a&b);
-endmodule
-
-Full adder program:
-
-module fulladd (a,b,c,sum,carry);
-input a,b,c;
-output sum,carry;
-assign sum = (a^b^c);
-assign carry = ((a&b)|(a^b)&c);
+```
+NOR GATE PROGRAM:
+module nor1(a,b,c,d,f);
+input a,b,c,d;
+output f;
+assign  f=(~(~((c&(~b)&a)|(d&(~c)&a)|(c&(~b)&a))));
 endmodule
 ```
-*/
-Logic symbol & Truthtable
-RTL realization
+## Truthtable(f=(((C.B'.A)+(D.C'.A)+(C.B'.A))')' USING NOR GATE)
 
-### Output:
-### RTL
-Half adder :
-![git log](vicky1.png)
-Full adder :
-![git log](vicky2.png)
-### TIMING DIAGRAM
-Half adder:
-![git log](vicky3.png)
-FULL ADDER:
-![git log](vicky4.png)
-### TRUTH TABLE 
-Half adder:
-![git log](vicky5.png)
-FULL ADDER:
-![git log](vicky6.png)
-### Result:
-thus the Implementation of Half Adder and Full Adder circuit are studied and the truth table for different logic gates are verified.
+
+![git log](m4.png)
+
+## RTL realization(f=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'USING NOR GATE)
+
+
+![git log](m5.jpeg)
+
+## Timing diagram (f=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'USING NOR GATE)
+
+![git log](m6.jpeg)
+
+
+## Result:
+
+
+The given logic function is implemented using NAND and NOR gates and it is verified successfully in Quartus using Verilog programming.
